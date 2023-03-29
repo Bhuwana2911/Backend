@@ -1,0 +1,27 @@
+//package com.example.manager.assign.tasks.repository;
+//
+//import java.util.List;
+//
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.jdbc.core.JdbcTemplate;
+//import org.springframework.stereotype.Repository;
+//
+//import com.example.manager.assign.tasks.model.Tasks;
+//
+//
+//
+//
+//@Repository
+//public class TasksRepo {
+//	
+//	@Autowired
+//	private JdbcTemplate template;
+//	
+//	String sql = "select employee_mail from employee e, manager m where m.mail = e.mail";	
+//	public Tasks findByMail(String mail) {
+//	    Tasks t = template.queryForObject(sql, new Object[] {mail}, new Mapper());		
+//		return t;
+//	}
+//	
+//
+//}

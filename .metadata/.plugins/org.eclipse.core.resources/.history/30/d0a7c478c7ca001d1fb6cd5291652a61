@@ -1,0 +1,26 @@
+package com.example.manager.check.repository;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import org.springframework.jdbc.core.RowMapper;
+
+import com.example.manager.check.model.Employee;
+
+public class AuthenticationMapper implements RowMapper<Employee>{
+
+	@Override
+	public Employee mapRow(ResultSet rs, int rowNum) throws SQLException {
+		// TODO Auto-generated method stub
+		
+		Employee emp = new Employee();		
+		emp.setMail(rs.getString("mail"));
+		emp.setEmployeeMail(rs.getString("employee_mail"));
+		emp.setEmployeeDepartment(rs.getString(("employeeDepartment"));
+		return emp;
+	}
+
+	
+	
+
+}

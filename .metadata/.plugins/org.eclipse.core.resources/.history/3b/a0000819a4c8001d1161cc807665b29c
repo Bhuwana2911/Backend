@@ -1,0 +1,10 @@
+package com.example.manager.check.update.service;
+
+import com.example.manager.check.update.model.Tasks;
+
+public interface CheckAndUpdateService {
+	
+	Tasks checkTasks(String employeeMail);
+
+	Tasks updateTaskStatus( String employeeMail);
+}

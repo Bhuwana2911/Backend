@@ -1,0 +1,7 @@
+package com.example.admin.login;
+
+
+@ExtendWith(MockitoExtension.class)
+public class FindAllMethodCheck {
+
+}

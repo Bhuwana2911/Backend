@@ -1,0 +1,59 @@
+package com.example.manager.accept.reject.serviceImpl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.manager.accept.reject.model.LeaveRequestModel;
+import com.example.manager.accept.reject.repository.AcceptRejectRepo;
+import com.example.manager.accept.reject.repository.AcceptRejectRepository;
+import com.example.manager.accept.reject.service.AcceptRejectService;
+
+
+@Service
+public class AcceptRejectServiceImpl implements AcceptRejectService{
+
+
+	@Autowired
+	private AcceptRejectRepo acceptRejectRepo;
+
+
+	@Autowired
+	private AcceptRejectRepository aacceptRejectRepository;
+
+	@Override
+	public List<LeaveRequestModel> getAllRequests(String mail) {
+		return acceptRejectRepo.findByMail(mail);
+
+	}
+
+	@Override
+	public LeaveRequestModel rejectLeave(LeaveRequestModel l, String employeeMail) {
+		LeaveRequestModel exists = aacceptRejectRepository.findByEmployeeMail(employeeMail);
+		if(exists != null) {
+			exists.setStatus("Rejected");
+		}
+		else {
+			exists.setStatus("Pending");
+		}
+		
+		return aacceptRejectRepository.save(exists);
+	}
+
+	@Override
+	public LeaveRequestModel acceptLeave(LeaveRequestModel acccept, String employeeMail) {
+		LeaveRequestModel exists1 = aacceptRejectRepository.findByMail(mail);
+		if(exists1.getStatus().equals("Pending") || exists1.getStatus().equals("Rejected")) {
+			exists1.setStatus("Accepted");
+		}
+		
+		return aacceptRejectRepository.save(exists1);
+	}
+
+
+
+
+
+
+}

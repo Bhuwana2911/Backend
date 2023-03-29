@@ -1,0 +1,5 @@
+package com.example.manager.assign.tasks.repository;
+
+public interface TasksEmployeeRepo {
+
+}

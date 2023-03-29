@@ -1,0 +1,32 @@
+package com.example.admin.login;
+
+import static org.mockito.Mockito.verify;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import com.example.admin.login.repository.EmployeeRepository;
+import com.example.admin.login.serviceImpl.EmployeeServiceImpl;
+
+@ExtendWith(MockitoExtension.class)
+public class FindAllMethodCheck {
+	
+	@Mock
+	private EmployeeRepository employeeRepo;
+	
+	
+	private EmployeeServiceImpl service;
+	
+	
+	
+	@Test
+	void getAllPersons() {
+		service.getAllEmloyeees();
+		verify(employeeRepo).findAll();
+	}
+	
+	
+
+}

@@ -1,0 +1,18 @@
+package com.example.employee;
+
+
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.example.manager.login.model.JwtRequest;
+
+import io.restassured.http.ContentType;
+import static io.restassured.RestAssured.*;
+@SpringBootTest
+
+class ManagerLoginApplicationTests {
+
+	
+
+}

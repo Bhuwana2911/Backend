@@ -1,0 +1,29 @@
+package com.example.employee;
+
+
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.example.manager.login.model.JwtRequest;
+
+import io.restassured.http.ContentType;
+
+@SpringBootTest
+class EmployeeMicroservicesApplicationTests {
+
+	@Test
+	void ManagerLoginTest() {		
+		JwtRequest logincheck = new JwtRequest();
+		logincheck.setMail("Narayana@gmail.com");
+		logincheck.setPassword("password");		
+		given().header("content_Type", "application/json").contentType(ContentType.JSON)
+		.accept(ContentType.JSON)
+		.body(logincheck)
+		.when()
+		.post("http://localhost:9504/token")
+		.then()
+		.assertThat().statusCode(200);		
+	}
+
+}

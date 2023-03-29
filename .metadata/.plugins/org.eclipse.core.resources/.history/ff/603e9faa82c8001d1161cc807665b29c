@@ -1,0 +1,71 @@
+package com.example.manager.assign.tasks.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+
+import com.example.manager.assign.tasks.model.Tasks;
+import com.example.manager.assign.tasks.repository.TasksEmployeeRepo;
+import com.example.manager.assign.tasks.repository.TasksRepository;
+import com.example.manager.assign.tasks.service.TasksService;
+
+@RestController
+@RequestMapping("/task")
+public class TasksController {
+
+	@Autowired
+	private TasksService service;
+
+	@Autowired
+	private TasksRepository repo;
+	
+	public TasksController(TasksService service) {
+		super();
+		this.service = service;
+	}
+
+
+	////-----------actually working
+
+//	@PostMapping("/assign")
+//	public ResponseEntity<Tasks> assignTasks(@RequestBody Tasks t) {		
+//		return new ResponseEntity<Tasks>(service.assignTasks(t), HttpStatus.OK);	
+//	}
+//
+
+	@GetMapping("/{employeeMail}")
+	public String getStatus(@PathVariable("employeeMail") String employeeMail) {
+		Tasks status_check = repo.findByEmployeeMail(employeeMail);
+		
+		if(!(status_check.getEmployeeMail().equals(employeeMail))){
+			return "No task assigned to employe";
+		}
+		String status = status_check.getEprogress();
+		return status;
+	}
+	
+	
+	@Autowired
+	private TasksEmployeeRepo repo1;
+	
+	@PostMapping("/assign")
+	public void assignTask(@RequestBody Tasks task){
+		String mail = task.getMail();
+		String employeeMail = task.getEmployeeMail();
+		
+		if(!(service.assignTaks(employeeMail, employeeMail))) {
+		     System.out.println("error");
+		}
+		Employee emp = 
+	}
+
+
+
+}

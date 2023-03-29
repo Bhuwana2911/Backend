@@ -1,0 +1,108 @@
+package com.example.leave.request.serviceImpl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import com.example.leave.request.model.Employee;
+import com.example.leave.request.model.LeaveRequest;
+import com.example.leave.request.model.Manager;
+import com.example.leave.request.repository.EmployeeRepo;
+import com.example.leave.request.repository.LeaveRequestRepository;
+import com.example.leave.request.repository.ManagerRepository;
+import com.example.leave.request.service.LeaveRequestService;
+
+
+@Service
+public class LeaveRequestServiceImpl implements LeaveRequestService{
+	
+	@Autowired
+	private LeaveRequestRepository repo;
+	
+	@Autowired
+	private EmployeeRepo employeeRepo;
+	
+	@Autowired 
+	private ManagerRepository managerRepo;
+	
+	public LeaveRequestServiceImpl(LeaveRequestRepository repo) {
+		super();
+		this.repo = repo;
+	}
+	
+	
+
+
+
+
+//	public LeaveRequestServiceImpl(EmployeeRepo employeeRpo) {
+//		super();
+//		this.employeeRpo = employeeRpo;
+//	}
+
+
+
+
+	Employee emp = new Employee();
+	Manager manager = new Manager();
+
+
+	@Override
+	public LeaveRequest createRequest(LeaveRequest leave) {
+		
+		
+		String empMail = leave.getEmployeeMail();
+		Employee empExists = employeeRepo.findByEmployeeMail(empMail);
+		
+		String managerMail = leave.getMail();
+		Manager managerExists = managerRepo.findByMail(managerMail);
+		
+		
+		System.out.println(empMail + " " + managerMail);
+		System.out.println( empExists.getMail());
+		if(!(managerMail.equals( empExists.getMail()))) {
+			System.out.println("not matched");
+		}
+		
+		
+		leave.setStatus("Pending");
+		
+		//leave.setEmployeeMail(employeeMail);
+		return repo.save(leave);
+		
+	}
+
+
+	@Override
+	public LeaveRequest updateRequest(LeaveRequest l, String employeeMail) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+
+//	List<LeaveRequest> requests = new ArrayList<>();
+//	@Override
+//	public LeaveRequest checkStatus(LeaveRequest l, String employeeMail) {
+//		
+//		for(LeaveRequest request : requests) {
+//			if(request.getEmployeeMail().equals(employeeMail)) {
+//				System.out.println("approved");
+//				return request;
+//			}
+//		}
+//		
+//		return null;
+//		
+//	}
+
+
+
+
+
+	
+}
