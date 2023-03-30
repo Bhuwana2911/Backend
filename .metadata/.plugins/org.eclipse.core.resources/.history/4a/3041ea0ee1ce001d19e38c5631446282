@@ -1,0 +1,18 @@
+package com.example.view;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class ViewAndUpdateEmployeeDetailsApplicationTests {
+	
+	@Autowired
+	private EmployeeViewService service;
+
+	@Test
+	void ViewEmployeeDetailsTest() {
+		String email = "Abc@gmail.com";
+		
+	}
+
+}

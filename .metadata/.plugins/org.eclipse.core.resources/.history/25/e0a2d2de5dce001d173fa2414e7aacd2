@@ -1,0 +1,39 @@
+package com.example.leave.request;
+
+import static io.restassured.RestAssured.given;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.example.leave.request.model.LeaveRequest;
+import com.example.leave.request.repository.LeaveRequestRepository;
+
+import io.restassured.http.ContentType;
+
+@SpringBootTest
+class LeaveRequestApplicationTests {
+
+	@Autowired
+	private LeaveRequestRepository r;
+	
+	@Test
+	void postLeaveTest() {
+		LeaveRequest l = new LeaveRequest();
+		l.setEmployeeMail("sai@gmail.com");
+		l.setMail("Renuka@manager.com");
+		l.setId(25);
+		l.setEdate(2023-04-05);
+//		l.setEdate(null);
+		l.setReason("Casual leave");
+		r.save(l);
+		given().header("content_Type", "application/json").contentType(ContentType.JSON)
+		.accept(ContentType.JSON)
+		.body(l)
+		.when()
+		.post("http://localhost:9505/leave/request")
+		.then()
+		.assertThat().statusCode(500);	
+	}
+
+}

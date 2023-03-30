@@ -1,0 +1,87 @@
+package com.example.admin.login;
+
+
+import static io.restassured.RestAssured.given;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.example.admin.login.model.Employee;
+import com.example.admin.login.model.Manager;
+import com.example.admin.login.repository.EmployeeRepository;
+
+import io.restassured.http.ContentType;
+
+
+
+@SpringBootTest
+//@ExtendWith(MockitoExtension.class)
+public class AdminLoginMicroservicesApplicationTests {
+	
+
+	@Autowired
+	private EmployeeRepository employeeRepo;	
+	
+	//Checking whether employee with mail exists or not
+	@Test
+	void findByEmployeeMail() {
+		//String email = "bharath@gmail.com";
+		String email = "bharath@gmail.com";
+		Employee employee = employeeRepo.findByEmployeeMail(email);
+		assertNotNull(employee);
+	}
+	
+	
+	@Test
+	void postEmployee() {
+	   Employee emp = new Employee();
+	   emp.setEmployeeId( 20231108L);
+	   emp.setEmployeeName("Ron");
+	   emp.setEmployeeMail("ron@gmail.com");
+	   emp.setEmployeeDepartment("Python");
+	   emp.setEmployeeRole("Developer");
+	   emp.setEmployeeMobile("9086745123");
+	   emp.setEmployeePassword("password");
+	   emp.setEmployeeGender("Male");
+	   emp.setMail("Hari@manager.com"); 
+	   
+	   given().header("content_Type", "application/json").contentType(ContentType.JSON)
+		.accept(ContentType.JSON)
+		.body(emp)
+		.when()
+		.post("http://localhost:9500/employees/setEmployees")
+		.then()
+		.assertThat().statusCode(201);	   
+	   
+	   
+	}
+	
+	
+	@Test
+	void postManager() {
+		Manager m = new Manager();
+		m.setMail("Giri@manager.com");
+		m.setMid("20239");
+		m.setMname("Giri");
+		m.setMrole("Manager");
+		m.setPassword("password");
+		
+		   given().header("content_Type", "application/json").contentType(ContentType.JSON)
+			.accept(ContentType.JSON)
+			.body(m)
+			.when()
+			.post("http://localhost:9500/manager/setManager")
+			.then()
+			.assertThat().statusCode(200);	 
+	}
+	
+
+	
+	
+	
+	
+	
+
+}

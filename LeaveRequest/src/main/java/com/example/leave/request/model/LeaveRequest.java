@@ -93,6 +93,20 @@ public class LeaveRequest {
 	public void setEmployeeMail(String employeeMail) {
 		this.employeeMail = employeeMail;
 	}
+	
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+	
+
+	public LeaveRequest() {
+		super();
+	}
+
 
 	public LeaveRequest(long id, @NotNull Date sdate, @NotNull Date edate, @NotNull String reason, String status,
 			String employeeMail) {
@@ -105,21 +119,16 @@ public class LeaveRequest {
 		this.employeeMail = employeeMail;
 	}
 
-	public LeaveRequest() {
-		super();
-	}
+	
 
-	public String getMail() {
-		return mail;
-	}
+//	public LeaveRequest(String mail) {
+//		super();
+//		this.mail = mail;
+//	}
 
-	public void setMail(String mail) {
-		this.mail = mail;
-	}
-
-	public LeaveRequest(String mail) {
-		super();
-		this.mail = mail;
-	}
+//	public static Object builder() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 	
 }

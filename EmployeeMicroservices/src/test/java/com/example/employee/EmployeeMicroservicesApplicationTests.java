@@ -20,12 +20,12 @@ class EmployeeMicroservicesApplicationTests {
 	void EmployeeLoginTest() {		
 		JwtRequest logincheck = new JwtRequest();
 		logincheck.setEmployee_mail("praneetha@gmail.com");
-		logincheck.setPassword("passwor");		
+		logincheck.setPassword("password");		
 		given().header("content_Type", "application/json").contentType(ContentType.JSON)
 		.accept(ContentType.JSON)
 		.body(logincheck)
 		.when()
-		.post("http://localhost:9501/token")
+		.post("http://localhost:9500/token")
 		.then()
 		.assertThat().statusCode(200);		
 	}

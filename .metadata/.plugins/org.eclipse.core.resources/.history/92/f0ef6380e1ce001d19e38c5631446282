@@ -1,0 +1,32 @@
+package com.example.view;
+
+import static org.mockito.Mockito.when;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+
+import com.example.view.repository.EmployeeViewRepository;
+import com.example.view.service.EmployeeViewService;
+import com.example.view.serviceImpl.EmployeeViewServiceImpl;
+
+@SpringBootTest
+class ViewAndUpdateEmployeeDetailsApplicationTests {
+	
+	@Autowired
+	private EmployeeViewServiceImpl service;
+	
+	
+	@MockBean
+	private EmployeeViewRepository repo;
+
+	@Test
+	void ViewEmployeeDetailsTest() {
+		String email = "Abc@gmail.com";
+		when(repo.findByEmployeeMail(email))
+		.thenReturn(service.getEmployeeByEmployeeMail(email));
+		
+	}
+
+}

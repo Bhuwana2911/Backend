@@ -1,0 +1,60 @@
+package com.example.admin.login;
+
+import static io.restassured.RestAssured.given;
+import static org.junit.Assert.assertEquals;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.io.IOException;
+
+import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
+
+
+
+import com.example.admin.login.controller.EmployeeController;
+import com.example.admin.login.model.Employee;
+import com.example.admin.login.repository.EmployeeRepository;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
+
+import io.restassured.http.ContentType;
+
+
+
+@SpringBootTest
+public class PostEmployeeTest {	
+	
+	@Test
+	void postEmployee() {
+	   Employee emp = new Employee();
+	   emp.setEmployeeId( 20231108L);
+	   emp.setEmployeeName("Ron");
+	   emp.setEmployeeMail("ron@gmail.com");
+	   emp.setEmployeeDepartment("Python");
+	   emp.setEmployeeRole("Developer");
+	   emp.setEmployeeMobile("9086745123");
+	   emp.setEmployeePassword("password");
+	   emp.setEmployeeGender("Male");
+	   emp.setMail("Hari@manager.com");
+	   	   
+	   
+	   
+	   given().header("content_Type", "application/json").contentType(ContentType.JSON)
+		.accept(ContentType.JSON)
+		.body(emp)
+		.when()
+		.post("http://localhost:9500/employees/setEmployees")
+		.then()
+		.assertThat().statusCode(201);   
+	   
+	   
+	}
+	
+
+}

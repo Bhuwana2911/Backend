@@ -1,0 +1,49 @@
+package com.example.manager.assign.tasks;
+
+import static io.restassured.RestAssured.given;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+
+import com.example.manager.assign.tasks.model.Tasks;
+
+import io.restassured.http.ContentType;
+
+@SpringBootTest
+class AssignTasksApplicationTests {
+
+	@Test
+	void postLeaveTest() {
+		Tasks l = new Tasks();
+		l.setEmployeeMail("sai@gmail.com");
+		l.setMail("Renuka@manager.com");
+		l.setId(25);
+		l.setSdate(null);
+		l.setEdate(null);
+		l.setReason("Casual leave");
+//		r.save(l);
+		given().header("content_Type", "application/json").contentType(ContentType.JSON)
+		.accept(ContentType.JSON)
+		.body(l)
+		.when()
+		.post("http://localhost:9505/leave/request")
+		.then()
+		.assertThat().statusCode(200);	
+	}
+	
+	
+	
+	//Test for all the leave requests
+	@Test
+	void checkAllLeavesTest() {
+		given().header("content_Type", "application/json").contentType(ContentType.JSON)
+		.accept(ContentType.JSON)
+		.when()
+		.get("http://localhost:9505/leave/leaves/bhuwaneshwari@gmail.com")
+		.then()
+		.assertThat().statusCode(200);	
+	}
+	
+
+}

@@ -35,25 +35,25 @@ public class Employee {
 	@Column(name = "role")
 	private String employeeRole;
 
-	@NotNull
+//	@NotNull
 	@Column(name = "password")
 	private String employeePassword;
 	
-	@NotNull
+//	@NotNull
 	@Column(name = "mobile")
 	private String employeeMobile;
 	
-	@NotNull
+//	@NotNull
 	@Column(name = "gender")
 	private String employeeGender;
 	
 	
-	@NotNull
+//	@NotNull
 	@Column(name = "address")
 	private String address;
 	
 	
-	@NotNull
+//	@NotNull
 	private String mail;
 
 

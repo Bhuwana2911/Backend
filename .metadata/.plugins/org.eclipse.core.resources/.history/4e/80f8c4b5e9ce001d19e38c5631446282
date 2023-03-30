@@ -1,0 +1,10 @@
+package com.example.manager.check.service;
+
+import java.util.List;
+
+import com.example.manager.check.model.Employee;
+
+public interface ManagerLoginService {
+	public List<Employee> getAllEmployeesOfManager(String mail) throws Exception;
+
+}

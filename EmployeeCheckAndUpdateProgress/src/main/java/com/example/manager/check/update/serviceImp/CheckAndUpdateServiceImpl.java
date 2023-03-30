@@ -30,11 +30,23 @@ public class CheckAndUpdateServiceImpl implements CheckAndUpdateService{
 	
 	@Autowired
 	private CheckAndUpdateRepo repo;
+	
+	
 
 
 
 	@Override
 	public List<Tasks> checkTasks(String employeeMail) {
+//		Tasks emp = repository.findByEmployeeMail(employeeMail);
+//		try {
+//			if(emp == null) {
+//				throw new RuntimeException("No tasks assigned for employee");
+//			}
+//		}
+//		catch(RuntimeException e) {
+//			e.printStackTrace();
+//		}
+		
 		return repo.findByEmployeeMail(employeeMail);
 	}
 

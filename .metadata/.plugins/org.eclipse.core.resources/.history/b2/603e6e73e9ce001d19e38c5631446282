@@ -1,0 +1,39 @@
+package com.example.manager.check.serviceImpl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.manager.check.model.Employee;
+import com.example.manager.check.model.Manager;
+import com.example.manager.check.repository.ManagerLoginRepository;
+//import com.example.manager.check.repository.ManagerLoginRepository;
+import com.example.manager.check.repository.ManagerRepo;
+import com.example.manager.check.service.ManagerLoginService;
+
+
+@Service
+public class ManagerLoginServiceImpl implements ManagerLoginService{
+	
+	@Autowired
+	private ManagerRepo repo;
+	
+	@Autowired
+	private ManagerLoginRepository repo1;
+
+//	public ManagerLoginServiceImpl(ManagerLoginRepository repo) {
+//		super();
+//		this.repo = repo;
+//	}
+
+
+
+	@Override
+	public List<Employee> getAllEmployeesOfManager(String mail) {
+//		Manager m = repo.findByMail1(mail);
+		return repo.findByMail(mail);
+		
+	}
+
+}

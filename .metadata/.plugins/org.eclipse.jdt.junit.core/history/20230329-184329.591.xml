@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="FindAllMethodCheck" project="AdminLoginMicroservices" tests="1" started="1" failures="0" errors="0" ignored="0">
-  <testsuite name="com.example.admin.login.FindAllMethodCheck" time="0.637" displayname="FindAllMethodCheck" uniqueid="[engine:junit-jupiter]/[class:com.example.admin.login.FindAllMethodCheck]">
-    <testcase name="getAllEmployees" classname="com.example.admin.login.FindAllMethodCheck" time="0.637" displayname="getAllEmployees()" uniqueid="[engine:junit-jupiter]/[class:com.example.admin.login.FindAllMethodCheck]/[method:getAllEmployees()]"/>
-  </testsuite>
-</testrun>

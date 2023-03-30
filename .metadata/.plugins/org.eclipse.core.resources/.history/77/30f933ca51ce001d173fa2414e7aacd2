@@ -1,0 +1,42 @@
+package com.example.admin.login;
+
+import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+
+import com.example.admin.login.controller.EmployeeController;
+import com.example.admin.login.model.Employee;
+import com.example.admin.login.repository.EmployeeRepository;
+
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest
+public class PostEmployeeTest {
+	
+	@Test
+	public void postEmployee() throws Exception {
+	   String url = "http://localhost:9500/employees/setEmployees";
+	   Employee emp = new Employee();
+	   emp.setEmployeeId(20230107L);
+	   emp.setEmployeeName("Harry Potter");
+	   emp.setEmployeeMail("potter@gmail.com");
+	   emp.setEmployeeDepartment("Python");
+	   emp.setEmployeeRole("Developer");
+	   emp.setEmployeeMobile("9086745123");
+	   emp.setEmployeePassword("password");
+	   emp.setEmployeeGender("Male");
+	   
+	   
+	   String inputJson = super.mapToJson(product);
+	   MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(url)
+	      .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+	   
+	   int status = mvcResult.getResponse().getStatus();
+	   assertEquals(201, status);
+	   String content = mvcResult.getResponse().getContentAsString();
+	   assertEquals(content, "Product is created successfully");
+	}
+
+}

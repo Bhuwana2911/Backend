@@ -1,0 +1,41 @@
+package com.example.view;
+
+import static org.mockito.Mockito.when;
+
+import static io.restassured.RestAssured.given;
+
+import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+
+import com.example.view.repository.EmployeeViewRepository;
+import com.example.view.service.EmployeeViewService;
+import com.example.view.serviceImpl.EmployeeViewServiceImpl;
+
+import io.restassured.http.ContentType;
+
+@SpringBootTest
+class ViewAndUpdateEmployeeDetailsApplicationTests {
+	
+	@Mock
+	private EmployeeViewService service;
+	
+	
+	@Mock
+	private EmployeeViewRepository repo;
+
+	@Test
+	void ViewEmployeeDetailsTest() {
+//		String email = "Abc@gmail.com";
+		
+		  given().header("content_Type", "application/json").contentType(ContentType.JSON)
+			.accept(ContentType.JSON)
+			.when()
+			.get("http://localhost:9502/viewEmployee/view/pranetha@gmail.com")
+			.then()
+			.assertThat().statusCode(201);	
+	}
+
+}

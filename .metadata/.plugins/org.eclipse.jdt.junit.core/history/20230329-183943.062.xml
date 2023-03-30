@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="AdminLoginMicroservicesApplicationTests" project="AdminLoginMicroservices" tests="1" started="1" failures="0" errors="0" ignored="0">
-  <testsuite name="com.example.admin.login.AdminLoginMicroservicesApplicationTests" time="0.387" displayname="AdminLoginMicroservicesApplicationTests" uniqueid="[engine:junit-jupiter]/[class:com.example.admin.login.AdminLoginMicroservicesApplicationTests]">
-    <testcase name="findByEmployeeMail" classname="com.example.admin.login.AdminLoginMicroservicesApplicationTests" time="0.387" displayname="findByEmployeeMail()" uniqueid="[engine:junit-jupiter]/[class:com.example.admin.login.AdminLoginMicroservicesApplicationTests]/[method:findByEmployeeMail()]"/>
-  </testsuite>
-</testrun>

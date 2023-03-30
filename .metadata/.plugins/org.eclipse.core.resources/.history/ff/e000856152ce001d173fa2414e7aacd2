@@ -1,0 +1,73 @@
+package com.example.admin.login;
+
+import static org.junit.Assert.assertEquals;
+
+import java.io.IOException;
+
+import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
+import com.example.admin.login.controller.EmployeeController;
+import com.example.admin.login.model.Employee;
+import com.example.admin.login.repository.EmployeeRepository;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest
+public class PostEmployeeTest {
+	
+	protected MockMvc mvc;
+	
+	@Autowired
+	   WebApplicationContext webApplicationContext;
+	
+	protected void setUp() {
+	      mvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
+	   }
+	   protected String mapToJson(Object obj) throws JsonProcessingException {
+	      ObjectMapper objectMapper = new ObjectMapper();
+	      return objectMapper.writeValueAsString(obj);
+	   }
+	   protected <T> T mapFromJson(String json, Class<T> clazz)
+	      throws JsonParseException, JsonMappingException, IOException {
+	      
+	      ObjectMapper objectMapper = new ObjectMapper();
+	      return objectMapper.readValue(json, clazz);
+	   }
+	   
+	
+	@Test
+	public void postEmployee() throws Exception {
+	   String url = "http://localhost:9500/employees/setEmployees";
+	   Employee emp = new Employee();
+	   emp.setEmployeeId(20230107L);
+	   emp.setEmployeeName("Harry Potter");
+	   emp.setEmployeeMail("potter@gmail.com");
+	   emp.setEmployeeDepartment("Python");
+	   emp.setEmployeeRole("Developer");
+	   emp.setEmployeeMobile("9086745123");
+	   emp.setEmployeePassword("password");
+	   emp.setEmployeeGender("Male");
+	   
+	   
+	   String inputJson = super.mapToJson(emp);
+	   MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(url)
+	      .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+	   
+	   int status = mvcResult.getResponse().getStatus();
+	   assertEquals(201, status);
+	   String content = mvcResult.getResponse().getContentAsString();
+	   assertEquals(content, "Product is created successfully");
+	}
+
+}
