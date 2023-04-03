@@ -53,7 +53,7 @@ public class Employee {
 	private String address;
 	
 	
-//	@NotNull
+	@NotNull
 	private String mail;
 
 

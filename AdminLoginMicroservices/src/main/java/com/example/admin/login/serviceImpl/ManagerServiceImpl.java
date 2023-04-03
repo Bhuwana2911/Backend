@@ -42,6 +42,8 @@ public class ManagerServiceImpl implements ManagerService{
 		return repo.findAll();
 	}
 	
+	
+	//fetching manager details by manager mail
 	@Override
 	public Manager getManagerByMail(String mail) {
 		Manager exists = repo.findByMail(mail);
@@ -50,5 +52,12 @@ public class ManagerServiceImpl implements ManagerService{
 		}
 		return exists;
 	}
+	
+	
+//	@Override
+//	public Manager getManagerDetails(String mail) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 }

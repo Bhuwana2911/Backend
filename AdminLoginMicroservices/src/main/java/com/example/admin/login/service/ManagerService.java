@@ -12,5 +12,7 @@ public interface ManagerService {
 	
 	Manager getManagerByMail(String mail);
 	
+//	Manager getManagerDetails(String mail);
+	
 
 }

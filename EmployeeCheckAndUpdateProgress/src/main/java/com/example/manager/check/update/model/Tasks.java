@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "tasks")
@@ -28,15 +30,20 @@ public class Tasks {
 	private String id;
 	
 	@Column
+	@NotNull
 	private String employeeMail;
 	
 	@Column
+	@NotNull
+	@Email
 	private String mail;
 	
 	@Column
+	@NotNull
 	private String description;
 	
 	@Column
+	@NotNull
 	private LocalDate deadline;
 	
 	@Column

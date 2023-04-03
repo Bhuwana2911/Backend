@@ -1,6 +1,10 @@
 package com.example.leave.request.controller;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.leave.request.model.Employee;
 import com.example.leave.request.model.LeaveRequest;
+import com.example.leave.request.repository.DummyRepo;
 import com.example.leave.request.repository.LeaveRequestRepository;
 import com.example.leave.request.service.LeaveRequestService;
 
@@ -26,6 +32,9 @@ public class LeaveRequestController {
 	private LeaveRequestRepository repo1;
 	
 	@Autowired
+	private DummyRepo dummy;
+	
+	@Autowired
 	private LeaveRequestService service;
 
 	public LeaveRequestController(LeaveRequestService service) {
@@ -33,12 +42,27 @@ public class LeaveRequestController {
 		this.service = service;
 	}
 	
-	//Requesting for leave - Post request
+	//Requesting for leave - Post request working actually
 	@PostMapping("/request")
-	public ResponseEntity<LeaveRequest> createRequest(@RequestBody LeaveRequest leave){		
+	public ResponseEntity<LeaveRequest> createRequest(@Valid @RequestBody LeaveRequest leave){		
 		LeaveRequest request = service.createRequest(leave);
 		return new ResponseEntity<LeaveRequest>(request, HttpStatus.OK); 
 	}
+	
+	
+//	@PostMapping("/request1")
+//	public ResponseEntity<String> checkEmails(@Valid @RequestBody Map<String, String> emailMap){
+//		String empmail = emailMap.get("employeeMail");
+//		String manmail = emailMap.get("mail");
+//		
+//		Optional<Employee> emp = dummy.findByEmployeeMail(empmail);
+//		Optional<Employee> man = dummy.findByMail(manmail);
+//		
+//		if(emp.isPresent() && man.isPresent()) {
+//			return ResponseEntity.ok("Valid");
+//		}
+//		return ResponseEntity.badRequest().body("Not valid");
+//	}
 	
 	
 	@GetMapping("/leaves/{employeeMail}")

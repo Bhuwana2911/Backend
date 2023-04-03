@@ -10,8 +10,10 @@ import com.example.manager.assign.tasks.model.Tasks;
 @Repository
 public interface TasksRepository extends JpaRepository<Tasks, Long>{
 	
-	Tasks findByEmployeeMail(String employeeMail);
+	Tasks findByEmployeeMail(Tasks task);
 	Tasks findById(String id);
+	boolean findByEmployeeMail(Object setEmployeeMail);
+	Tasks findByMail(String mail);
 	
 	
 }

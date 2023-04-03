@@ -1,0 +1,14 @@
+package com.example.leave.request.repository;
+
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.example.leave.request.model.Employee;
+
+public interface DummyRepo extends JpaRepository<Employee, String>{
+	
+	Optional<Employee> findByMail(String email);
+	Optional<Employee> findByEmployeeMail(String email);
+
+}

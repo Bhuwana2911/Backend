@@ -36,6 +36,14 @@ public class TasksServiceImpl implements TasksService{
 
 	@Override
 	public Tasks assignTasks(Tasks task) {		
+		
+//		System.out.println(t1.getEmployeeMail());
+//		if(tasksRepository.findByEmployeeMail(task.setEmployeeMail(task.getEmployeeMail())))
+
+//		Tasks exists = tasksRepository.findByMail(task.getMail()); 
+//		if(exists == null) {
+//			System.out.println("No manager with " + exists.getMail() + " exists");
+//		}
 		task.setTstatus(TaskStatus.Assigned.name());
 		return tasksRepository.save(task);
 	}

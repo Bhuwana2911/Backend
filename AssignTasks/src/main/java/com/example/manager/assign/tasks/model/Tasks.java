@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -30,10 +31,12 @@ public class Tasks {
 	
 	@Column
 	@NotNull
+	@Email
 	private String employeeMail;
 	
 	@Column
-	//@NotNull
+	@NotNull
+	@Email
 	private String mail;
 	
 	@Column
@@ -48,15 +51,17 @@ public class Tasks {
 	//@NotNull
 	private String tstatus;
 	
-	@Column
-	
+	@Column	
 	private String eprogress;
 	
-	@Column
-	
+	@Column	
 	private LocalDate submissiondate;
 	
 	
+	
+
+
+
 	
 
 	public String getId() {
@@ -123,8 +128,9 @@ public class Tasks {
 		this.submissiondate = submissiondate;
 	}
 
-	public Tasks(String id, String employeeMail, String mail, String description, LocalDate deadline, String tstatus,
-			String eprogress, LocalDate submissiondate) {
+	public Tasks(String id, @NotNull @Email String employeeMail, @NotNull @Email String mail,
+			@NotNull String description, @NotNull LocalDate deadline, String tstatus, String eprogress,
+			LocalDate submissiondate) {
 		super();
 		this.id = id;
 		this.employeeMail = employeeMail;

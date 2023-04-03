@@ -1,0 +1,7 @@
+package com.example.leave.request.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface DummyRepo extends JpaRepository<Employee, String>{
+
+}

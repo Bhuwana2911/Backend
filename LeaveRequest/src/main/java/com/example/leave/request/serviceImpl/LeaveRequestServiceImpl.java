@@ -34,6 +34,10 @@ public class LeaveRequestServiceImpl implements LeaveRequestService{
 	@Override
 	public LeaveRequest createRequest(LeaveRequest leave) {
 		leave.setStatus("Pending");
+		if(leave.getSdate().after(leave.getEdate())) {
+			throw new RuntimeException("Leave can't apply");
+		}
+
 		return repo.save(leave);		
 	}
 

@@ -41,9 +41,11 @@ public class LeaveRequest {
 	
 	@Column
 	@Size(message = "No leave request with this employee mail")
+	@NotNull
 	private String employeeMail;
 	
 	@Column
+	@NotNull
 	private String mail;
 
 	public long getId() {
@@ -107,9 +109,9 @@ public class LeaveRequest {
 		super();
 	}
 
-
 	public LeaveRequest(long id, @NotNull Date sdate, @NotNull Date edate, @NotNull String reason, String status,
-			String employeeMail) {
+			@Size(message = "No leave request with this employee mail") @NotNull String employeeMail,
+			@NotNull String mail) {
 		super();
 		this.id = id;
 		this.sdate = sdate;
@@ -117,8 +119,11 @@ public class LeaveRequest {
 		this.reason = reason;
 		this.status = status;
 		this.employeeMail = employeeMail;
+		this.mail = mail;
 	}
 
+
+	
 	
 
 //	public LeaveRequest(String mail) {

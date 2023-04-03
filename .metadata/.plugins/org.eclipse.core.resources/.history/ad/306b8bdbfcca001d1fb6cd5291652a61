@@ -1,5 +1,0 @@
-package com.example.leave.request.repository;
-
-public interface ManagerRepository {
-
-}

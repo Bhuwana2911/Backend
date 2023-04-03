@@ -87,7 +87,8 @@ public class Manager {
 	}
 
 
-	public Manager(@Email @NotNull String mail, String mid, String mname, String mrole, String password) {
+	public Manager(@Email @NotNull String mail, @NotNull String mid, @NotNull String mname, @NotNull String mrole,
+			@NotNull String password) {
 		super();
 		this.mail = mail;
 		this.mid = mid;

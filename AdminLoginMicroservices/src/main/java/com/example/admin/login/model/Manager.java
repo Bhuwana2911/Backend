@@ -13,13 +13,15 @@ import javax.validation.constraints.NotNull;
 @Table(name = "manager")
 public class Manager {
 	
-	@NotNull
+	
 	@Id
 	@Email
+	@NotNull
 	private String mail;
 	
-	@NotNull
+	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@NotNull
 	@Column
 	private String mid;
 	
@@ -87,7 +89,8 @@ public class Manager {
 	}
 
 
-	public Manager(@Email @NotNull String mail, String mid, String mname, String mrole, String password) {
+	public Manager(@Email @NotNull String mail, @NotNull String mid, @NotNull String mname, @NotNull String mrole,
+			@NotNull String password) {
 		super();
 		this.mail = mail;
 		this.mid = mid;
@@ -100,6 +103,9 @@ public class Manager {
 	public Manager() {
 		super();
 	}
+
+
+	
 	
 	
 	

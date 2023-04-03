@@ -41,12 +41,28 @@ public class LeaveRequestModel {
 	private String status;
 	
 	@Column
-	
+	@NotNull
 	private String employeeMail;
 	
 	@Column
+	@NotNull
 	private String mail;
-	
+
+	public LeaveRequestModel() {
+		super();
+	}
+
+	public LeaveRequestModel(long id, @NotNull Date sdate, @NotNull Date edate, @NotNull String reason, String status,
+			@NotNull String employeeMail, @NotNull String mail) {
+		super();
+		this.id = id;
+		this.sdate = sdate;
+		this.edate = edate;
+		this.reason = reason;
+		this.status = status;
+		this.employeeMail = employeeMail;
+		this.mail = mail;
+	}
 
 	public long getId() {
 		return id;
@@ -96,12 +112,6 @@ public class LeaveRequestModel {
 		this.employeeMail = employeeMail;
 	}
 
-	
-
-	public LeaveRequestModel() {
-		super();
-	}
-
 	public String getMail() {
 		return mail;
 	}
@@ -109,18 +119,9 @@ public class LeaveRequestModel {
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
+	
 
-	public LeaveRequestModel(long id, @NotNull Date sdate, @NotNull Date edate, @NotNull String reason, String status,
-			String employeeMail, String mail) {
-		super();
-		this.id = id;
-		this.sdate = sdate;
-		this.edate = edate;
-		this.reason = reason;
-		this.status = status;
-		this.employeeMail = employeeMail;
-		this.mail = mail;
-	}
+	
 
 	
 	

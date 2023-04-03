@@ -21,8 +21,9 @@ import com.example.admin.login.repository.EmployeeRepository;
 import com.example.admin.login.repository.ManagerRepository;
 import com.example.admin.login.service.ManagerService;
 
-@CrossOrigin("http://localhost:3000")
 @RestController
+
+@CrossOrigin("http://localhost:3000")
 @RequestMapping("/manager")
 public class ManagerController {
 	
