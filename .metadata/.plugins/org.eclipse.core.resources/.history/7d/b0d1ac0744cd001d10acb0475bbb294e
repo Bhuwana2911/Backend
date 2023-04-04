@@ -1,5 +1,0 @@
-package com.example.manager.login.repository;
-
-public interface ManagerRepositoryInterface {
-
-}

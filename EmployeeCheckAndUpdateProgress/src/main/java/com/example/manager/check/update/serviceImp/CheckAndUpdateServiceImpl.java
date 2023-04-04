@@ -47,6 +47,7 @@ public class CheckAndUpdateServiceImpl implements CheckAndUpdateService{
 //			e.printStackTrace();
 //		}
 		
+		
 		return repo.findByEmployeeMail(employeeMail);
 	}
 
@@ -57,7 +58,8 @@ public class CheckAndUpdateServiceImpl implements CheckAndUpdateService{
 
 		Tasks exists = repository.findById(id);
 		
-		if(exists != null) {		
+		if(exists != null) {	
+//			exists.setEprogress(;
 		if(LocalDate.now().isBefore(exists.getDeadline())) {
 			exists.setEprogress(TaskStatus.Completed.name());
 			//exists.setSubmissiondate(LocalDate.now());	

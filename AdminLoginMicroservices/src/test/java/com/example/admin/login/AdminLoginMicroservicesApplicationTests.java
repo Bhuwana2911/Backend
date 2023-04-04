@@ -51,29 +51,11 @@ public class AdminLoginMicroservicesApplicationTests {
 	@Test
 	@Order(2)
 	void postEmployee() {
-	   Employee emp = new Employee();
-	   emp.setEmployeeId(1233567L);
-	   emp.setEmployeeName("Ammukol");
-	   emp.setEmployeeRole("Deveops");
-	   emp.setEmployeePassword("Ammu");
-	   emp.setEmployeeDepartment("java");
-	   emp.setEmployeeMail("ammu@gmai.com");
-	   
-	 
-//	   emp.setMail("Hari@manager.com"); 
-	   
-	   given().header("content_Type", "application/json").contentType(ContentType.JSON)
-		.accept(ContentType.JSON)
-		.body(emp)
-		.when()
-		.post("http://localhost:9500/employees/setEmployees")
-		.then()
-		.assertThat().statusCode(201);
 		
-//		Employee emp = new Employee(20230108L,"Hogwarts","Java",
-//				"male","ron@gmail.com","9086754123","Ron","password","Developer","Hari@manager.com");
-//		when(employeeRepo.save(emp)).thenReturn(emp);
-//		assertEquals(emp,service.saveEmployee(emp));
+		Employee emp = new Employee(20230108L,"Hogwarts","Java",
+				"male","ron@gmail.com","9086754123","Ron","password","Developer","Hari@manager.com");
+		when(employeeRepo.save(emp)).thenReturn(emp);
+		assertEquals(emp,service.saveEmployee(emp));
 		
 	   }
 	
@@ -82,21 +64,7 @@ public class AdminLoginMicroservicesApplicationTests {
 	@Test
 	@Order(3)
 	void postManager() {
-//		Manager m = new Manager();
-//		m.setMail("Giri@manager.com");
-//		m.setMid("20239");
-//		m.setMname("Giri");
-//		m.setMrole("Manager");
-//		m.setPassword("password");
-//		
-//		   given().header("content_Type", "application/json").contentType(ContentType.JSON)
-//			.accept(ContentType.JSON)
-//			.body(m)
-//			.when()
-//			.post("http://localhost:9500/manager/setManager")
-//			.then()
-//			.assertThat().statusCode(201);	
-		
+	
 		
 	}
 //	

@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -42,10 +43,12 @@ public class LeaveRequest {
 	@Column
 	@Size(message = "No leave request with this employee mail")
 	@NotNull
+	@Email
 	private String employeeMail;
 	
 	@Column
 	@NotNull
+	@Email
 	private String mail;
 
 	public long getId() {
@@ -110,8 +113,8 @@ public class LeaveRequest {
 	}
 
 	public LeaveRequest(long id, @NotNull Date sdate, @NotNull Date edate, @NotNull String reason, String status,
-			@Size(message = "No leave request with this employee mail") @NotNull String employeeMail,
-			@NotNull String mail) {
+			@Size(message = "No leave request with this employee mail") @NotNull @Email String employeeMail,
+			@Email @NotNull String mail) {
 		super();
 		this.id = id;
 		this.sdate = sdate;
@@ -122,7 +125,7 @@ public class LeaveRequest {
 		this.mail = mail;
 	}
 
-
+	
 	
 	
 

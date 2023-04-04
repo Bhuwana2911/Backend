@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -42,18 +43,22 @@ public class LeaveRequestModel {
 	
 	@Column
 	@NotNull
+	@Email
 	private String employeeMail;
 	
 	@Column
 	@NotNull
+	@Email
 	private String mail;
 
 	public LeaveRequestModel() {
 		super();
 	}
 
+	
+
 	public LeaveRequestModel(long id, @NotNull Date sdate, @NotNull Date edate, @NotNull String reason, String status,
-			@NotNull String employeeMail, @NotNull String mail) {
+			@NotNull @Email String employeeMail, @NotNull @Email String mail) {
 		super();
 		this.id = id;
 		this.sdate = sdate;
@@ -63,6 +68,8 @@ public class LeaveRequestModel {
 		this.employeeMail = employeeMail;
 		this.mail = mail;
 	}
+
+
 
 	public long getId() {
 		return id;

@@ -31,6 +31,7 @@ public class Tasks {
 	
 	@Column
 	@NotNull
+	@Email
 	private String employeeMail;
 	
 	@Column
@@ -142,8 +143,9 @@ public class Tasks {
 	}
 
 
-	public Tasks(String id, String employeeMail, String mail, String description, LocalDate deadline, String tstatus,
-			String eprogress, LocalDate submissiondate) {
+	public Tasks(String id, @NotNull @Email String employeeMail, @NotNull @Email String mail,
+			@NotNull String description, @NotNull LocalDate deadline, String tstatus, String eprogress,
+			LocalDate submissiondate) {
 		super();
 		this.id = id;
 		this.employeeMail = employeeMail;
@@ -155,6 +157,8 @@ public class Tasks {
 		this.submissiondate = submissiondate;
 	}
 
+
+	
 
 	
 

@@ -11,6 +11,7 @@ import com.example.admin.login.model.Employee;
 public interface EmployeeRepository extends JpaRepository<Employee, Long>{
 	Employee findByEmployeeMail(String employeeEmail);
 	Employee findByEmployeeId(Long employeeId);
+	Employee findByMail(String mail);
 	
 
 }

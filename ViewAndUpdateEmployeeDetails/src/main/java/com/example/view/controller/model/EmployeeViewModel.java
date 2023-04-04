@@ -6,6 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 
 
@@ -37,10 +38,12 @@ public class EmployeeViewModel {
 	
 	@NotNull(message="password")
 	@Column(name = "password")
+	@Size(min = 6, message="password must be characters long")
 	private String employeePassword;
 	
 	@NotNull
 	@Column(name = "mobile")
+	@Size(min = 10,max=10, message="Mobile number should be 10 characters long")
 	private String employeeMobile;
 	
 	@NotNull
@@ -53,6 +56,11 @@ public class EmployeeViewModel {
 	@NotNull
 	@Column(name = "address")
 	private String address;
+	
+	
+	@Email
+	@NotNull(message="mail")
+	private String mail;
 	
 	
 	public Long getEmployeeId() {
@@ -138,7 +146,7 @@ public class EmployeeViewModel {
 	}
 	
 	
-	private String mail;
+	
 	
 	
 
@@ -153,10 +161,16 @@ public class EmployeeViewModel {
 
 	
 
-	public EmployeeViewModel(@NotNull(message = "id") Long employeeId, String employeeName,
+	
+
+	
+
+	public EmployeeViewModel(@NotNull(message = "id") Long employeeId, @NotNull String employeeName,
 			@Email @NotNull(message = "mail") String employeeMail, @NotNull(message = "dept") String employeeDepartment,
-			@NotNull(message = "role") String employeeRole, @NotNull(message = "password") String employeePassword,
-			String employeeMobile, String employeeGender, String address, String mail) {
+			@NotNull(message = "role") String employeeRole,
+			@NotNull(message = "password") @Size(min = 6, message = "password must be characters long") String employeePassword,
+			@NotNull @Size(min = 10,max=10, message = "Mobile number should be 10 characters long") String employeeMobile,
+			@NotNull String employeeGender, @NotNull String address, @Email @NotNull(message = "mail") String mail) {
 		super();
 		this.employeeId = employeeId;
 		this.employeeName = employeeName;

@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "employee")
@@ -41,6 +42,7 @@ public class Employee {
 	
 //	@NotNull
 	@Column(name = "mobile")
+	@Size(min = 10, message="Mobile number should be 10 characters long")
 	private String employeeMobile;
 	
 //	@NotNull
@@ -54,6 +56,8 @@ public class Employee {
 	
 	
 	@NotNull
+	@Email
+	@Column
 	private String mail;
 
 
@@ -149,9 +153,13 @@ public class Employee {
 
 
 
-	public Employee(@NotNull Long employeeId, String employeeName, @Email @NotNull String employeeMail,
+	
+	
+
+	public Employee(@NotNull Long employeeId, @NotNull String employeeName, @Email @NotNull String employeeMail,
 			@NotNull String employeeDepartment, @NotNull String employeeRole, String employeePassword,
-			String employeeMobile, String employeeGender, String address, String mail) {
+			@Size(min = 10, message = "Mobile number should be 10 characters long") String employeeMobile,
+			String employeeGender, String address, @NotNull @Email String mail) {
 		super();
 		this.employeeId = employeeId;
 		this.employeeName = employeeName;
@@ -161,12 +169,9 @@ public class Employee {
 		this.employeePassword = employeePassword;
 		this.employeeMobile = employeeMobile;
 		this.employeeGender = employeeGender;
-		
 		this.address = address;
 		this.mail = mail;
 	}
-	
-	
 
 	public Employee() {
 		super();

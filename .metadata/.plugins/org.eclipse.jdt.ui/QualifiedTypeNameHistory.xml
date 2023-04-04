@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="com.example.manager.login.model.Manager"/>
-    <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
-    <fullyQualifiedTypeName name="org.springframework.http.HttpStatus"/>
-    <fullyQualifiedTypeName name="com.example.manager.login.repository.ManagerRepositoryInterface"/>
-    <fullyQualifiedTypeName name="javax.persistence.Entity"/>
-    <fullyQualifiedTypeName name="com.example.employee.model.JwtRequest"/>
-    <fullyQualifiedTypeName name="com.example.admin.login.service.EmployeeService"/>
     <fullyQualifiedTypeName name="org.mockito.junit.jupiter.MockitoExtension"/>
     <fullyQualifiedTypeName name="org.junit.jupiter.api.extension.ExtendWith"/>
     <fullyQualifiedTypeName name="org.junit.jupiter.api.BeforeEach"/>
@@ -35,7 +28,6 @@
     <fullyQualifiedTypeName name="ch.qos.logback.core.net.ObjectWriter"/>
     <fullyQualifiedTypeName name="com.fasterxml.jackson.databind.ObjectWriter"/>
     <fullyQualifiedTypeName name="org.springframework.boot.test.context.SpringBootTest"/>
-    <fullyQualifiedTypeName name="com.example.admin.login.model.Manager"/>
     <fullyQualifiedTypeName name="com.example.leave.request.model.LeaveRequest"/>
     <fullyQualifiedTypeName name="com.example.leave.request.repository.LeaveRequestRepository"/>
     <fullyQualifiedTypeName name="java.text.DateFormat"/>
@@ -58,6 +50,14 @@
     <fullyQualifiedTypeName name="com.example.manager.assign.tasks.model.Tasks"/>
     <fullyQualifiedTypeName name="java.time.LocalDate"/>
     <fullyQualifiedTypeName name="javax.validation.constraints.NotNull"/>
-    <fullyQualifiedTypeName name="javax.validation.constraints.Email"/>
     <fullyQualifiedTypeName name="javax.validation.Valid"/>
+    <fullyQualifiedTypeName name="java.util.Map"/>
+    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.JpaRepository"/>
+    <fullyQualifiedTypeName name="com.example.leave.request.model.Employee"/>
+    <fullyQualifiedTypeName name="java.util.Optional"/>
+    <fullyQualifiedTypeName name="com.example.leave.request.repository.DummyRepo"/>
+    <fullyQualifiedTypeName name="javax.validation.constraints.Email"/>
+    <fullyQualifiedTypeName name="org.apache.catalina.Manager"/>
+    <fullyQualifiedTypeName name="com.example.admin.login.model.Manager"/>
+    <fullyQualifiedTypeName name="javax.validation.constraints.Size"/>
 </qualifiedTypeNameHistroy>

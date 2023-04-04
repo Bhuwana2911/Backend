@@ -24,8 +24,12 @@ public class ManagerServiceImpl implements ManagerService{
 	}
 	@Override
 	public Manager saveManager(Manager manager) {
+//		String mail = manager.getMail();
+//		System.out.println(mail);
+		
 		Manager manage = repo.findByMail(manager.getMail());
 		Manager manage1 = repo.findByMid(manager.getMid());
+		
 		if(manage != null ) {
 			System.out.println("Manager already exists");
 			throw new CustomException("Manager", "Manager mail", manager.getMail());
@@ -33,6 +37,27 @@ public class ManagerServiceImpl implements ManagerService{
 		else if(manage1 != null) {
 			System.out.println("Manager with manager id already exists");
 			throw new CustomException("Manager", "Manager id", manager.getMid());
+		}
+		
+		String mail = manager.getMail();
+		System.out.println(mail);
+		
+//		if((( manager.getMail().contains("manager"))) && !( manager.getMail().contains("gmail"))) {
+//			//System.out.println("Invalid manager mail");
+//			manager.setMail(manager.getMail());
+//			//throw new IllegalArgumentException("no manager in manager mail");
+//		}
+//		else {
+//			manager.setMail(null);
+//		}
+		
+		if(manage == null) {
+			if(mail.contains("gmail")) {
+				System.out.println("No gmail");
+			}
+			else {
+				repo.save(manager);
+			}
 		}
 		return repo.save(manager);
 	}

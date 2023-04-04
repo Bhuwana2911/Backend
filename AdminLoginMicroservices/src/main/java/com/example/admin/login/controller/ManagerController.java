@@ -42,6 +42,9 @@ public class ManagerController {
 	@PostMapping("/setManager")
 	public ResponseEntity<Manager> saveManager(@Valid @RequestBody Manager manager){
 		Manager m = service.saveManager(manager);
+		String mail = manager.getMail();
+		System.out.println(mail);
+		
 		return new ResponseEntity<Manager>(m, HttpStatus.CREATED);
 	}
 	

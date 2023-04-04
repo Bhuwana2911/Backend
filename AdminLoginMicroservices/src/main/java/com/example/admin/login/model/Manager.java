@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "manager")
@@ -35,6 +36,7 @@ public class Manager {
 	
 	
 	@NotNull
+	@Size(min = 6, message = "Password must be atleast 6 characters long")
 	@Column
 	private String password;
 
@@ -89,8 +91,11 @@ public class Manager {
 	}
 
 
+	
+
+
 	public Manager(@Email @NotNull String mail, @NotNull String mid, @NotNull String mname, @NotNull String mrole,
-			@NotNull String password) {
+			@NotNull @Size(min = 6, message = "Password must be atleast 6 characters long") String password) {
 		super();
 		this.mail = mail;
 		this.mid = mid;
